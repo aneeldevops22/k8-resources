@@ -15,7 +15,7 @@ spec:
 kind: persistentvolume
 apiVersion: v1
 metadata: 
-   name: ebs-pv-5
+   name: ebs-static-pv-5
 spec:  
  capacity:
    storage: 5Gi 
