@@ -8,7 +8,7 @@ spec :
    accessModes : 
     - readWriteOnce
     storageClassName : ""
-    awsBlockStore : 
+    awsElasticBlockStore : 
       volumeId : "vol-0e42542fab35660e2"
       fsType : ext4
   ---
