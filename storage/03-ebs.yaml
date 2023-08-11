@@ -1,14 +1,14 @@
 kind: persistentvolume
 apiVersion: v1
 metadata: 
-   name: ebs-pv 
+   name: ebs-static-pv 
 spec: 
   capacity: 
     storage: 25Gi
-   accessModes: 
+  accessModes: 
     - ReadWriteOnce
-    storageClassName: ""
-    awsElasticBlockStore: 
+  storageClassName: ""
+  awsElasticBlockStore: 
       volumeID: "vol-0e42542fab35660e2"
       fsType: ext4
   ---
@@ -19,10 +19,10 @@ metadata:
 spec:  
  capacity:
    storage: 5Gi 
-   accessModes: 
+ accessModes: 
     - ReadWriteOnce
-    storageClassName: ""
-    awsElastcBlockStore: 
+ storageClassName: ""
+ awsElastcBlockStore: 
       volumeID: "vol-0af904e7907d14895"
       fsType: ext4
 ---
