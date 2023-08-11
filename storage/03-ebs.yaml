@@ -1,5 +1,5 @@
-kind: persistentvolume
 apiVersion: v1
+kind: persistentvolume
 metadata: 
    name: ebs-static-pv 
 spec: 
@@ -12,8 +12,8 @@ spec:
       volumeID: "vol-0e42542fab35660e2"
       fsType: ext4
   ---
-  kind: persistentvolume
   apiVersion: v1
+  kind: persistentvolume
   metadata: 
    name: ebs-static-pv-5
   spec:  
@@ -26,8 +26,8 @@ spec:
       volumeID: "vol-0af904e7907d14895"
       fsType: ext4
   ---
-  kind: persistentvolumeclaim
   apiVersion: v1
+  kind: persistentvolumeclaim
   metadata: 
    name: ebs-static-pvc
   spec: 
