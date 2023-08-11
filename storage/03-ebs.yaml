@@ -6,7 +6,7 @@ spec :
   capacity : 
     storage : 25Gi
    accessModes : 
-    - readWriteOnce
+    - ReadWriteOnce
     storageClassName : ""
     awsElasticBlockStore : 
       volumeID: "vol-0e42542fab35660e2"
@@ -20,7 +20,7 @@ spec :
      capacity :
        storage : 5Gi 
    accessModes : 
-    - readWriteOnce
+    - ReadWriteOnce
     storageClassName : ""
     awsElastcBlockStore : 
       volumeID : "vol-0af904e7907d14895"
@@ -32,7 +32,7 @@ metadata :
    name : ebs-static-pvc
    spec : 
     accessModes : 
-      - readWriteOnce
+      - ReadWriteOnce
   resources :
    requests : 
      storage : 10Gi 
