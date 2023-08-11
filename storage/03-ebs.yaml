@@ -9,7 +9,7 @@ spec :
     - readWriteOnce
     storageClassName : ""
     awsElasticBlockStore : 
-      volumeId : "vol-0e42542fab35660e2"
+      volumeID: "vol-0e42542fab35660e2"
       fsType : ext4
   ---
   kind : persistentvolume
@@ -22,8 +22,8 @@ spec :
    accessModes : 
     - readWriteOnce
     storageClassName : ""
-    awsBlockStore : 
-      volumeId : "vol-0af904e7907d14895"
+    awsElastcBlockStore : 
+      volumeID : "vol-0af904e7907d14895"
       fsType : ext4
 ---
 kind : persistentvolumeclaim
