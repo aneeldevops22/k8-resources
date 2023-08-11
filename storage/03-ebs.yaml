@@ -12,7 +12,7 @@ spec:
       volumeID: "vol-0e42542fab35660e2"
       fsType: ext4
   ---
-  kind: persistentvolume
+kind: persistentvolume
 apiVersion: v1
 metadata: 
    name: ebs-pv-5
