@@ -3,8 +3,8 @@ apiVersion : v1
 metadata : 
    name : ebs-pv 
 spec : 
-  storage : 
-     capacity : 25Gi
+  capacity : 
+     storage : 25Gi
    accessModes : 
     - readWriteOnce
     storageClassName : ""
@@ -16,9 +16,9 @@ spec :
 apiversion : v1
 metadata : 
    name : ebs-pv-5
-spec : 
-  storage : 
-     capacity : 5Gi
+spec :  
+     capacity :
+       storage : 5Gi 
    accessModes : 
     - readWriteOnce
     storageClassName : ""
