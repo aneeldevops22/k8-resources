@@ -40,7 +40,7 @@ spec:
     #awsBlockStore : 
      # volumeId : 
       #fsType : ext4 
----
+#---
 # kind : pod
 # apiversion : v1
 # metadata : 
