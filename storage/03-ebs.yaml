@@ -13,7 +13,7 @@ spec:
       fsType: ext4
   ---
   kind: persistentvolume
-apiversion: v1
+apiVersion: v1
 metadata: 
    name: ebs-pv-5
 spec:  
