@@ -12,31 +12,31 @@ spec:
       volumeID: "vol-0e42542fab35660e2"
       fsType: ext4
   ---
-kind: persistentvolume
-apiVersion: v1
-metadata: 
+  kind: persistentvolume
+  apiVersion: v1
+  metadata: 
    name: ebs-static-pv-5
-spec:  
- capacity:
+  spec:  
+   capacity:
    storage: 5Gi 
- accessModes: 
+  accessModes: 
     - ReadWriteOnce
- storageClassName: ""
- awsElasticBlockStore: 
+  storageClassName: ""
+  awsElasticBlockStore: 
       volumeID: "vol-0af904e7907d14895"
       fsType: ext4
----
-kind: persistentvolumeclaim
-apiVersion: v1
-metadata: 
+  ---
+  kind: persistentvolumeclaim
+  apiVersion: v1
+  metadata: 
    name: ebs-static-pvc
-   spec: 
+  spec: 
     accessModes: 
       - ReadWriteOnce
   resources:
    requests: 
      storage: 10Gi 
-    storageClassName: ""
+  storageClassName: ""
     #awsBlockStore : 
      # volumeId : 
       #fsType : ext4 
