@@ -1,0 +1,30 @@
+kind: service
+apiversion: v1
+metadata:
+  name: ngnix-service
+  namespace: default
+  labels: 
+     name: ngnix-service
+     environment: dev
+   spec:
+     type: LoadBalancer  
+   selector:
+    course: kubernetes
+   ports:
+    - name: http-port
+      protocol: tcp
+      port: 80
+      targetport: 80
+  ---
+   kind : pod
+   apiversion : v1
+     metadata: 
+       name : ngnix
+    labels : 
+      project : eksctl
+      environment : dev
+      component : ngnix
+     spec :
+       containers : 
+         name : ngnix 
+         image : ngnix    

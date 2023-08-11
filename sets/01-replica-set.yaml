@@ -1,0 +1,21 @@
+kind : replicaset
+apiversion : apps/v1
+metadata :  
+  name : ngnix-replicaset
+ labels : 
+  projectname : eksctl
+  environment : dev
+  component : ngnix
+ spec : 
+   replicas : 3
+   selector :
+      matchlabels : 
+      tier : frontend
+   template : 
+    metadata :
+       labels : 
+          tier : frontend 
+  spec : 
+    containers : 
+      name : ngnix
+      image : ngnix    

@@ -1,0 +1,16 @@
+kind : pod
+apiversion : v1
+metadata :
+   name : env-pod
+ spec :
+    containers :
+      image : ngnix
+      name  : env-pod
+    env :
+    - name : course
+      value : terraform 
+    - name : trainer 
+      value : aneel kumar
+    - name : duration 
+      value : 60 days
+    - name :    

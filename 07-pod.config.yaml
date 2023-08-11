@@ -1,0 +1,22 @@
+apiversion : v1
+kind : configmap
+metadata :
+  name : config-test
+  data :
+    CART_HOST : cart
+    USER_HOST: user
+    MYSQL_HOST : mysql.joindevops.com
+    MYSQL_SCHEMA : cities
+  ---
+   kind : pod 
+   apiversion : v1
+   metadata : 
+     name : env-pod
+   spec :
+     containers : 
+       image : ngnix
+       name : env-pod 
+       envFrom :
+        - configMapRef :
+           name : config-test 
+

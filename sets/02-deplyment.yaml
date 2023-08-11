@@ -1,0 +1,21 @@
+kind : deployment
+apiversion : apps/v1
+metadata :  
+  name : ngnix-deployment
+ labels : 
+  name : ngnix
+ spec : 
+   replicas : 3
+   selector :
+      matchlabels : 
+         name : ngnix
+   template : 
+    metadata :
+       labels : 
+        name : ngnix
+  spec : 
+    containers : 
+      name : ngnix
+      image : ngnix-1.14.2
+    ports : 
+      containerport : 80    

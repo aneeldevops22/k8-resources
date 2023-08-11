@@ -1,0 +1,66 @@
+kind : persistentvolume 
+apiversion : v1
+metadata : 
+  name : efs-static-pvc
+spec : 
+  storage : 
+     capacity : 50Gi
+  accessmodes : 
+    - readWriteOnce
+  storageclass : ""
+persistentVolumeClaim : retain
+csi :
+  driver : 
+  volumeHandle : 
+
+---
+  kind : persistentvolumeclaim
+apiversion : v1
+metadata : 
+  name : efs-static-pvc
+spec : 
+  storage : 
+     capacity : 15Gi
+  accessmodes : 
+    - readWriteOnce
+  storageclass : ""
+---
+kind : pod
+apiversion : v1
+metadata : 
+  name : ngnix
+spec : 
+  containers : 
+   - image : ngnix
+    name : ngnix
+    ports 
+    - containerport : 80 
+  volumeMounts : 
+    - mountpath : /usr/share/ngnix/html
+    name : html
+
+volumes : 
+  - name : html
+  persistentVolumeClaim : 
+     claimName : static-efs-pvc
+
+---
+kind: service
+apiversion: v1
+metadata:
+  name: ngnix-service
+  namespace: default
+  labels: 
+     name: ngnix-service
+     environment: dev
+   spec:
+     type: LoadBalancer  
+   selector:
+    course: kubernetes
+   ports:
+    - name: http-port
+      protocol: tcp
+      port: 80
+      targetport: 80     
+
+

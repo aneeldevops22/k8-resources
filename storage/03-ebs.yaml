@@ -1,0 +1,81 @@
+kind : persistentvolume
+apiVersion : v1
+metadata : 
+   name : ebs-pv 
+spec : 
+  storage : 
+     capacity : 25Gi
+   accessModes : 
+    - readWriteOnce
+    storageClassName : ""
+    awsBlockStore : 
+      volumeId : "vol-0e42542fab35660e2"
+      fsType : ext4
+  ---
+  kind : persistentvolume
+apiversion : v1
+metadata : 
+   name : ebs-pv-5
+spec : 
+  storage : 
+     capacity : 5Gi
+   accessModes : 
+    - readWriteOnce
+    storageClassName : ""
+    awsBlockStore : 
+      volumeId : "vol-0af904e7907d14895"
+      fsType : ext4
+---
+kind : persistentvolumeclaim
+apiVersion : v1
+metadata : 
+   name : ebs-static-pvc
+   spec : 
+    accessModes : 
+      - readWriteOnce
+  resources :
+   requests : 
+     storage : 10Gi 
+    storageClassName : ""
+    #awsBlockStore : 
+     # volumeId : 
+      #fsType : ext4 
+---
+# kind : pod
+# apiversion : v1
+# metadata : 
+#   name : ngnix
+# spec : 
+#   containers : 
+#    - image : ngnix
+#     name : ngnix
+#     ports 
+#     - containerport : 80 
+#   volumeMounts : 
+#     - mountpath : /usr/share/ngnix/html
+#     name : html
+
+# volumes : 
+#   - name : html
+#   persistentVolumeClaim : 
+#      claimName : static-ebs-pvc
+
+# ---
+# kind: service
+# apiversion: v1
+# metadata:
+#   name: ngnix-service
+#   namespace: default
+#   labels: 
+#      name: ngnix-service
+#      environment: dev
+#    spec:
+#      type: LoadBalancer  
+#    selector:
+#     course: kubernetes
+#    ports:
+#     - name: http-port
+#       protocol: tcp
+#       port: 80
+#       targetport: 80     
+

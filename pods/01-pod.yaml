@@ -1,0 +1,10 @@
+kind : pod
+apiversion : v1
+metadata :
+ name : ngnix
+ spec :
+   containers :
+     - image : ngnix
+       name : ngnix
+       ports :
+       containerports : 80 
