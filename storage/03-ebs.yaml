@@ -11,7 +11,7 @@ spec:
   awsElasticBlockStore: 
       volumeID: "vol-0e42542fab35660e2"
       fsType: ext4
-  ---
+---
   apiVersion: v1
   kind: persistentvolume
   metadata: 
@@ -25,7 +25,7 @@ spec:
   awsElasticBlockStore: 
       volumeID: "vol-0af904e7907d14895"
       fsType: ext4
-  ---
+---
   apiVersion: v1
   kind: persistentvolumeclaim
   metadata: 
