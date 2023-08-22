@@ -1,81 +1,78 @@
-apiVersion: storage.k8s.io/v1
-kind: persistentvolume
-metadata: 
-   name: ebs-static-pv 
-spec: 
-  capacity: 
-    storage: 25Gi
-  accessModes: 
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ebs-static-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
     - ReadWriteOnce
   storageClassName: ""
-  awsElasticBlockStore: 
-      volumeID: "vol-0e42542fab35660e2"
+  awsElasticBlockStore:
+      volumeID: "vol-06c1ff345c0424ef6"
       fsType: ext4
 ---
-  apiVersion: storage.k8s.io/v1
-  kind: persistentvolume
-  metadata: 
-   name: ebs-static-pv-5
-  spec:  
-   capacity:
-   storage: 5Gi 
-  accessModes: 
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ebs-static-pv-5
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
     - ReadWriteOnce
   storageClassName: ""
-  awsElasticBlockStore: 
-      volumeID: "vol-0af904e7907d14895"
+  awsElasticBlockStore:
+      volumeID: "vol-071f2cc57f27957a1"
       fsType: ext4
 ---
-  apiVersion: storage.k8s.io/v1
-  kind: persistentvolumeclaim
-  metadata: 
-   name: ebs-static-pvc
-  spec: 
-    accessModes: 
-      - ReadWriteOnce
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-static-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
   resources:
-   requests: 
-     storage: 10Gi 
+    requests:
+      storage: 8Gi
   storageClassName: ""
-    #awsBlockStore : 
-     # volumeId : 
-      #fsType : ext4 
-#---
-# kind : pod
-# apiversion : v1
-# metadata : 
-#   name : ngnix
-# spec : 
-#   containers : 
-#    - image : ngnix
-#     name : ngnix
-#     ports 
-#     - containerport : 80 
-#   volumeMounts : 
-#     - mountpath : /usr/share/ngnix/html
-#     name : html
-
-# volumes : 
-#   - name : html
-#   persistentVolumeClaim : 
-#      claimName : static-ebs-pvc
-
-# ---
-# kind: service
-# apiversion: v1
-# metadata:
-#   name: ngnix-service
-#   namespace: default
-#   labels: 
-#      name: ngnix-service
-#      environment: dev
-#    spec:
-#      type: LoadBalancer  
-#    selector:
-#     course: kubernetes
-#    ports:
-#     - name: http-port
-#       protocol: tcp
-#       port: 80
-#       targetport: 80     
-
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+  labels:
+    purpose: ebs-static
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - mountPath: "/usr/share/nginx/html"
+      name: html
+  volumes:
+    - name: html
+      persistentVolumeClaim:
+        claimName: ebs-static-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    name: nginx
+spec:
+  type: LoadBalancer
+  selector:
+  # you should provide pod labels here
+    purpose: ebs-static
+  ports:
+  - name: http-port
+    protocol: TCP
+    # service port
+    port: 80
+    # pod port
+    targetPort: 80
